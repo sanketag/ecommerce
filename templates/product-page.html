@@ -45,28 +45,28 @@
                         <div class="row">
                             <div class="col-md-6 col-xl-5">
                                 <div class="gallery">
-                                    <div class="sp-wrap"><a href="/../assets/img/tech/image1.jpg"><img class="img-fluid d-block mx-auto" src="/../assets/img/tech/image1.jpg"></a><a href="/../assets/img/tech/image1.jpg"><img class="img-fluid d-block mx-auto" src="/../assets/img/tech/image2.jpg"></a><a href="/../assets/img/tech/image1.jpg"><img class="img-fluid d-block mx-auto" src="/../assets/img/tech/image3.png"></a>
+                                    <div class="sp-wrap"><a href="{{allProds.0.l1}}"><img class="img-fluid d-block mx-auto" src="{{allProds.0.l1}}"></a><a href="{{allProds.0.l2}}"><img class="img-fluid d-block mx-auto" src="{{allProds.0.l2}}"></a><a href="{{allProds.0.l3}}"><img class="img-fluid d-block mx-auto" src="{{allProds.0.l3}}"></a>
                                         <a
-                                            href="/../assets/img/tech/image1.jpg"><img class="img-fluid d-block mx-auto" src="/../assets/img/tech/image3.png"></a><a href="/../assets/img/tech/image1.jpg"><img class="img-fluid d-block mx-auto" src="/../assets/img/tech/image3.png"></a></div>
+                                            href="{{allProds.0.l4}}"><img class="img-fluid d-block mx-auto" src="{{allProds.0.l4}}"></a><a href="{{allProds.0.l5}}"><img class="img-fluid d-block mx-auto" src="{{allProds.0.l5}}"></a></div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-7">
                                 <div class="info" style="margin-top: 20px;">
-                                    <h3>Lorem Ipsum</h3>
-                                    <div class="rating"><img src="/../assets/img/star.svg"><img src="/../assets/img/star.svg"><img src="/../assets/img/star.svg"><img src="/../assets/img/star-half-empty.svg"><img src="/../assets/img/star-empty.svg"><span>Text</span></div>
+                                    <h3>{{allProds.0.name}}</h3>
+                                    <div class="rating"><img src="/../assets/img/star.svg"><img src="/../assets/img/star.svg"><img src="/../assets/img/star.svg"><img src="/../assets/img/star-half-empty.svg"><img src="/../assets/img/star-empty.svg"><span>{{allProds.0.rating}}</span></div>
                                     <div>
                                         <h1 class="text-monospace text-capitalize text-success" style="font-size: 13px;">Special price</h1>
                                     </div>
                                     <div>
                                         <div class="row" style="margin: 0px;margin-bottom: 8px;">
                                             <div class="col-xl-3" style="padding: 0px;">
-                                                <h3 class="float-left" style="margin: 0px;"><strong>$1,00,000</strong></h3>
+                                                <h3 class="float-left" style="margin: 0px;"><strong>Rs. {{allProds.0.price}}</strong></h3>
                                             </div>
                                             <div class="col-xl-2" style="padding: 0px;margin-right: 12px;margin-left: 12px;">
-                                                <h6 class="text-secondary float-left" style="margin-top: 8px;margin-bottom: 0px;"><span style="text-decoration: line-through;">$1,00,000</span></h6>
+                                                <h6 class="text-secondary float-left" style="margin-top: 8px;margin-bottom: 0px;"><span style="text-decoration: line-through;">Rs. {{allProds.0.mrp}}</span></h6>
                                             </div>
                                             <div class="col-xl-4" style="padding: 0px;">
-                                                <h6 class="text-monospace text-success float-left" style="margin-top: 8px;margin-bottom: 0px;"><strong>$1,000 off</strong></h6>
+                                                <h6 class="text-monospace text-success float-left" style="margin-top: 8px;margin-bottom: 0px;"><strong>Rs. {{allProds.0.less}} off</strong></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -116,20 +116,20 @@
                                     elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <figure class="figure"><img class="img-fluid figure-img" src="/../assets/img/tech/image3.png"></figure>
+                                        <figure class="figure"><img class="img-fluid figure-img" src="{{allProds.0.l1}}"></figure>
                                     </div>
                                     <div class="col-md-7">
-                                        <h4>Lorem Ipsum</h4>
+                                        <h4>Maximum Display Resolution {{allProds.0.Maximum_Display_Resolution}}</h4>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-7 right">
-                                        <h4>Lorem Ipsum</h4>
+                                        <h4>{{allProds.0.Processor_Brand}} Processor</h4>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                     </div>
                                     <div class="col-md-5">
-                                        <figure class="figure"><img class="img-fluid figure-img" src="/../assets/img/tech/image3.png"></figure>
+                                        <figure class="figure"><img class="img-fluid figure-img" src="{{allProds.0.l2}}"></figure>
                                     </div>
                                 </div>
                             </div>
@@ -138,20 +138,60 @@
                                     <table class="table table-bordered">
                                         <tbody>
                                             <tr>
-                                                <td class="stat">Display</td>
-                                                <td>5.2"</td>
+                                                <td class="stat">Screen_Size</td>
+                                                <td>{{allProds.0.Screen_Size}}</td>
                                             </tr>
                                             <tr>
-                                                <td class="stat">Camera</td>
-                                                <td>12MP</td>
+                                                <td class="stat">Maximum_Display_Resolution</td>
+                                                <td>{{allProds.0.Maximum_Display_Resolution}}</td>
                                             </tr>
                                             <tr>
-                                                <td class="stat">RAM</td>
-                                                <td>4GB</td>
+                                                <td class="stat">Item_Weight</td>
+                                                <td>{{allProds.0.Item_Weight}}</td>
                                             </tr>
                                             <tr>
-                                                <td class="stat">OS</td>
-                                                <td>iOS</td>
+                                                <td class="stat">Product_Dimensions</td>
+                                                <td>{{allProds.0.Product_Dimensions}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="stat">Batteries</td>
+                                                <td>{{allProds.0.Batteries}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="stat">Processor_Brand</td>
+                                                <td>{{allProds.0.Processor_Brand}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="stat">Processor_Type</td>
+                                                <td>{{allProds.0.Processor_Type}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="stat">RAM_Size</td>
+                                                <td>{{allProds.0.RAM_Size}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="stat">Memory_Technology</td>
+                                                <td>{{allProds.0.Memory_Technology}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="stat">Hard_Drive_Size</td>
+                                                <td>{{allProds.0.Hard_Drive_Size}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="stat">Hard_Disk_Technology</td>
+                                                <td>{{allProds.0.Hard_Disk_Technology}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="stat">Graphics_Coprocessor</td>
+                                                <td>{{allProds.0.Graphics_Coprocessor}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="stat">Operating_System</td>
+                                                <td>{{allProds.0.Operating_System}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="stat">Date_First_Available</td>
+                                                <td>{{allProds.0.Date_First_Available}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -189,37 +229,37 @@
                         <div class="row justify-content-center">
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="border-white clean-related-item">
-                                    <div class="image"><a href="/internal/product/"><img class="img-fluid d-block mx-auto" src="/../assets/img/tech/image2.jpg"></a></div>
-                                    <div class="related-name"><a href="/internal/product/">Lorem Ipsum dolor</a>
-                                        <h4>$300</h4>
-                                        <h6><span style="text-decoration: line-through;">$300</span></h6>
+                                    <div class="image"><a href="/internal/{{all.19.company}}/{{all.19.name}}/"><img class="img-fluid d-block mx-auto" src="{{all.19.l1}}"></a></div>
+                                    <div class="related-name"><a href="/internal/{{all.19.company}}/{{all.19.name}}/">{{all.19.name}}</a>
+                                        <h4>{{all.19.price}}</h4>
+                                        <h6><span style="text-decoration: line-through;">{{all.19.mrp}}</span></h6>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="border-white clean-related-item">
-                                    <div class="image"><a href="/internal/product/"><img class="img-fluid d-block mx-auto" src="/../assets/img/tech/image2.jpg"></a></div>
-                                    <div class="related-name"><a href="/internal/product/">Lorem Ipsum dolor</a>
-                                        <h4>$300</h4>
-                                        <h6><span style="text-decoration: line-through;">$300</span></h6>
+                                    <div class="image"><a href="/internal/{{all.2.company}}/{{all.2.name}}/"><img class="img-fluid d-block mx-auto" src="{{all.2.l1}}"></a></div>
+                                    <div class="related-name"><a href="/internal/{{all.2.company}}/{{all.2.name}}/">{{all.2.name}}</a>
+                                        <h4>{{all.2.price}}</h4>
+                                        <h6><span style="text-decoration: line-through;">{{all.2.mrp}}</span></h6>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="border-white clean-related-item">
-                                    <div class="image"><a href="/internal/product/"><img class="img-fluid d-block mx-auto" src="/../assets/img/tech/image2.jpg"></a></div>
-                                    <div class="related-name"><a href="/internal/product/">Lorem Ipsum dolor</a>
-                                        <h4>$300</h4>
-                                        <h6><span style="text-decoration: line-through;">$300</span></h6>
+                                    <div class="image"><a href="/internal/{{all.13.company}}/{{all.13.name}}/"><img class="img-fluid d-block mx-auto" src="{{all.13.l1}}"></a></div>
+                                    <div class="related-name"><a href="/internal/{{all.13.company}}/{{all.13.name}}/">{{all.13.name}}</a>
+                                        <h4>{{all.13.price}}</h4>
+                                        <h6><span style="text-decoration: line-through;">{{all.13.mrp}}</span></h6>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-lg-4 col-xl-3">
                                 <div class="border-white clean-related-item">
-                                    <div class="image"><a href="/internal/product/"><img class="img-fluid d-block mx-auto" src="/../assets/img/tech/image2.jpg"></a></div>
-                                    <div class="related-name"><a href="/internal/product/">Lorem Ipsum dolor</a>
-                                        <h4>$300</h4>
-                                        <h6><span style="text-decoration: line-through;">$300</span></h6>
+                                    <div class="image"><a href="/internal/{{all.25.company}}/{{all.25.name}}/"><img class="img-fluid d-block mx-auto" src="{{all.25.l1}}"></a></div>
+                                    <div class="related-name"><a href="/internal/{{all.25.company}}/{{all.25.name}}/">{{all.25.name}}</a>
+                                        <h4>{{all.25.price}}</h4>
+                                        <h6><span style="text-decoration: line-through;">{{all.25.mrp}}</span></h6>
                                     </div>
                                 </div>
                             </div>

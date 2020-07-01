@@ -14,12 +14,6 @@ class Laptop(models.Model):
     l3 =models.CharField(max_length=200)
     l4 =models.CharField(max_length=200)
     l5 =models.CharField(max_length=200)
-    def __str__(self):
-        return self.name
-
-class LaptopDetail(models.Model):
-    company = models.CharField(max_length=50)
-    name = models.CharField(max_length=200)
     Screen_Size = models.CharField(max_length=50)
     Maximum_Display_Resolution = models.CharField(max_length=50)
     Item_Weight = models.CharField(max_length=50)

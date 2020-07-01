@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import csv
-from .models import Laptop,LaptopDetail
+from .models import Laptop
 
 # Create your views here.
 def login(request):
@@ -26,14 +26,7 @@ def importdata(request):
             l2 = row[8],
             l3 = row[9],
             l4 = row[10],
-            l5 = row[11]
-            )
-    with open('laptop.csv') as f:
-        reader = csv.reader(f)
-        for row in reader:
-            created = LaptopDetail.objects.create(
-            company = row[0],
-            name = row[1],
+            l5 = row[11],
             Screen_Size = row[12],
             Maximum_Display_Resolution = row[13],
             Item_Weight = row[14],
