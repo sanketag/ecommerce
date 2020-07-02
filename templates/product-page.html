@@ -52,7 +52,7 @@
                             </div>
                             <div class="col-md-6 col-xl-7">
                                 <div class="info" style="margin-top: 20px;">
-                                    <h3>{{allProds.0.name}}</h3>
+                                    <h3 name='name'>{{allProds.0.name}}</h3>
                                     <div class="rating"><img src="/../assets/img/star.svg"><img src="/../assets/img/star.svg"><img src="/../assets/img/star.svg"><img src="/../assets/img/star-half-empty.svg"><img src="/../assets/img/star-empty.svg"><span>{{allProds.0.rating}}</span></div>
                                     <div>
                                         <h1 class="text-monospace text-capitalize text-success" style="font-size: 13px;">Special price</h1>
@@ -60,7 +60,7 @@
                                     <div>
                                         <div class="row" style="margin: 0px;margin-bottom: 8px;">
                                             <div class="col-xl-3" style="padding: 0px;">
-                                                <h3 class="float-left" style="margin: 0px;"><strong>Rs. {{allProds.0.price}}</strong></h3>
+                                                <h3 class="float-left" style="margin: 0px;" name='price'><strong>Rs. {{allProds.0.price}}</strong></h3>
                                             </div>
                                             <div class="col-xl-2" style="padding: 0px;margin-right: 12px;margin-left: 12px;">
                                                 <h6 class="text-secondary float-left" style="margin-top: 8px;margin-bottom: 0px;"><span style="text-decoration: line-through;">Rs. {{allProds.0.mrp}}</span></h6>
@@ -93,7 +93,7 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        </div><button class="btn btn-primary float-right" type="button"><i class="icon-basket"></i>Add to Cart</button><label class="text-secondary float-left" style="margin-right: 30px;font-size: 15px;margin-top: 6px;">Delievery</label>
+                                        </div><form action="/account/{{allProds.0.name}}/{{allProds.0.price}}/"><button class="btn btn-primary float-right" type="submit"><i class="icon-basket"></i>Add to Cart</button></form><label class="text-secondary float-left" style="margin-right: 30px;font-size: 15px;margin-top: 6px;">Delievery</label>
                                         <div
                                             class="input-group mb-3 bod" style="width: 260px;margin: 0px;">
                                             <div class="input-group-prepend"><span class="bg-white border-white input-group-text" style="height: 33px;"><i class="icon ion-ios-location border-secondary" style="font-size: 20px;width: 30px;"></i><input class="border-white" type="text" required="" maxlength="6" minlength="6" style="font-size: 14px;height: 32px;border-top: hidden;border-right: hidden;border-left: hidden;" placeholder="Enter Delivery Pincode"></span></div>

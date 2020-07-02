@@ -8,5 +8,6 @@ urlpatterns = [
     path('register/',views.register),
     path('afterregister/',views.afterregister.as_view()),
     path('logout/',views.logout),
+    path('<str:name>/<str:price>/',views.afterclick),
     path('importdata/',views.importdata),  
 ]

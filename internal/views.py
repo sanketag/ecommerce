@@ -1,7 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from account.models import Laptop
-from .models import Addcart
 # Create your views here.
 def about(request):
     return render(request,'about-us.html')
@@ -16,7 +15,6 @@ def catalog(request):
     prod = Laptop.objects.all()
     prod=list(prod)
     params = {'allProds':prod}
-    print(params)
     return render(request,'catalog-page.html',params)
 
 def contact(request):
@@ -25,7 +23,7 @@ def contact(request):
 def payment(request):
     return render(request,'payment-page.html')
 
-def product(request,company,name):
+def product(request,name):
     model = Laptop.objects.filter(name=name)
     prod = Laptop.objects.all()
     prod=list(prod)
@@ -34,3 +32,4 @@ def product(request,company,name):
 
 def profile(request):
     return render(request,'profile.html')
+

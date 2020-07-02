@@ -1,34 +1,37 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 import csv
 from .models import Laptop,Adduser
-from internal.models import Addcart
 from django.views import View
 # from django.core.mail import send_mail
 # from random import randint
 from django.conf import settings
 
+ec = ''
 # Create your views here.
 def login(request):
     if request.session.get('email'):
-        return render(request,"index.html")
+        return redirect("/")
     else:
         return render(request,'login.html')
 
 def afterlogin(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
-    print(email,password)
     try:
-        obj = Adduser.objects.filter(password=password)
-        print(obj)
+        obj = Adduser.objects.get(email=email)
     except:
         error = "No such user...."
         return render(request,"login.html",{'error':error})
     else:
         if password == obj.password:
-            # request.session['email'] = email
-            return render(request,"index.html")
+            request.session['email'] = email
+            global ec
+            ec = obj.ecart
+            if ec:ec = ec.split('@')
+            else:ec = []
+            print(ec)
+            return redirect("/")
         else:
             error = "Invalid password"
             return render(request,"login.html",{'error':error})
@@ -39,7 +42,7 @@ def register(request):
 class afterregister(View):
     def get(self,request):
         error = "Invalid method"
-        return render(request,'registration.html')
+        return render(request,'registration.html',{'error':error})
     
     def post(self,request):
         data = {
@@ -49,25 +52,32 @@ class afterregister(View):
         'email' : request.POST.get('email'),
         'password' : request.POST.get('password'),
         }
-        em = {
-        'email' : request.POST.get('email'),
-        }
         try:
             obje = Adduser.objects.get(email=data['email'])
             objm = Adduser.objects.get(email=data['mobile'])
         except Exception:   
             new_obj = Adduser.objects.create(**data)
             new_obj.save()
-            new_ob = Addcart.objects.create(**em)
-            new_ob.save()
-            return render(request,"index.html")
+            return redirect("/account/login/")
         else:
             error = "User already exists...."
             return render(request,"register.html",{'error':error})
 
+def afterclick(request,name,price):
+    global ec
+    ec.append(name)
+    ec.append(price)
+    return redirect('/internal/cart/')
+
 def logout(request):
+    global ec
+    email = request.session.get('email')
+    obj = Adduser.objects.get(email=email)
+    ec = '@'.join(ec)
+    obj.ecart = ec
+    obj.save()
     del request.session['email']
-    return redirect('/account/login/')
+    return redirect('/')
 
 def importdata(request):
     with open('laptop.csv') as f:
