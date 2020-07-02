@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from account.models import Laptop
+from .models import Addcart
 # Create your views here.
 def about(request):
     return render(request,'about-us.html')
