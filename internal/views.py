@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from account.models import Laptop
+from account.models import Laptop,Adduser
 # Create your views here.
 def about(request):
     return render(request,'about-us.html')
@@ -9,6 +9,16 @@ def blog(request):
     return render(request,'blog-post-list.html')
 
 def cart(request):
+    email = request.session.get('email')
+    obj = Adduser.objects.get(email=email)
+    ec = obj.ecart
+    if ec:ec = ec.split('@')
+    else:ec = []
+    prod = Laptop.objects.all()
+    prod=list(prod)
+    print(ec)
+    print(prod)
+    params = {'ec':ec,'all':prod}
     return render(request,'shopping-cart.html')
 
 def catalog(request):

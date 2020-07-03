@@ -26,11 +26,6 @@ def afterlogin(request):
     else:
         if password == obj.password:
             request.session['email'] = email
-            global ec
-            ec = obj.ecart
-            if ec:ec = ec.split('@')
-            else:ec = []
-            print(ec)
             return redirect("/")
         else:
             error = "Invalid password"
@@ -63,19 +58,20 @@ class afterregister(View):
             error = "User already exists...."
             return render(request,"register.html",{'error':error})
 
-def afterclick(request,name,price):
-    global ec
-    ec.append(name)
-    ec.append(price)
-    return redirect('/internal/cart/')
-
-def logout(request):
+def afterclick(request,name):
     global ec
     email = request.session.get('email')
     obj = Adduser.objects.get(email=email)
+    ec = obj.ecart
+    if ec:ec = ec.split('@')
+    else:ec = []
+    ec.append(name)
     ec = '@'.join(ec)
     obj.ecart = ec
     obj.save()
+    return redirect('/internal/cart/')
+
+def logout(request):
     del request.session['email']
     return redirect('/')
 
