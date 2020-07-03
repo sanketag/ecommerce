@@ -10,6 +10,8 @@ def blog(request):
     return render(request,'blog-post-list.html')
 
 def cart(request):
+    price = 0
+    l = []
     email = request.session.get('email')
     obj = Adduser.objects.get(email=email)
     prod = Laptop.objects.all()
@@ -17,10 +19,10 @@ def cart(request):
     ec = obj.ecart
     if ec:ec = list(map(int,ec.split(',')))
     else:ec = []
-    print(ec)
     for i in ec:
-        print(prod[i].name)
-    params = {'ec':ec,'all':prod}
+        l.append([prod[i].name,prod[i].price,prod[i].l1])
+        price += prod[i].price
+    params = {'l':l,'price':price}
     return render(request,'shopping-cart.html',params)
 
 def catalog(request):
@@ -33,7 +35,20 @@ def contact(request):
     return render(request,'contact-us.html')
 
 def payment(request):
-    return render(request,'payment-page.html')
+    price = 0
+    l = []
+    email = request.session.get('email')
+    obj = Adduser.objects.get(email=email)
+    prod = Laptop.objects.all()
+    prod=list(prod)
+    ec = obj.ecart
+    if ec:ec = list(map(int,ec.split(',')))
+    else:ec = []
+    for i in ec:
+        l.append([prod[i].name,prod[i].price,i+1])
+        price += prod[i].price
+    params = {'l':l,'price':price}
+    return render(request,'payment-page.html',params)
 
 def product(request,name):
     model = Laptop.objects.filter(name=name)

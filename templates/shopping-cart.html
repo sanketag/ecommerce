@@ -45,15 +45,15 @@
                         <div class="col-md-12 col-lg-8">
                             <div class="items">
                                 <div class="product">
-                                    {% for item in ec %}
+                                    {% for i,j,k in l %}
                                     <div class="row justify-content-center align-items-center">
                                         <div class="col-md-3">
-                                            <div class="product-image"><img class="img-fluid d-block mx-auto image" src="/../assets/img/tech/image2.jpg"></div>
+                                            <div class="product-image"><img class="img-fluid d-block mx-auto image" src={{ k }}></div>
                                         </div>
-                                        <div class="col-md-5 product-info"><a class="product-name" href="#" style="font-size: 14px;">{{ all.0.name }}</a>
+                                        <div class="col-md-5 product-info"><a class="product-name" href="#" style="font-size: 14px;">{{ i }}</a>
                                         </div>
                                         <div class="col-6 col-md-2 quantity"><label class="d-none d-md-block" for="quantity">Quantity</label><input type="number" id="number" class="form-control quantity-input" value="1"></div>
-                                        <div class="col-6 col-md-2 price"><span style="font-size: 17px;">Rs. </span><span style="font-size: 17px;">{{ all.0.price }}</span></div>
+                                        <div class="col-6 col-md-2 price"><span style="font-size: 17px;">Rs. </span><span style="font-size: 17px;">{{ j }}</span></div>
                                     </div>
                                     {% endfor %}
                                 </div>
@@ -62,10 +62,10 @@
                         <div class="col-md-12 col-lg-4">
                             <div class="summary">
                                 <h3>Summary</h3>
-                                <h4><span class="text">Subtotal</span><span class="price">$360</span></h4>
-                                <h4><span class="text">Discount</span><span class="price">$0</span></h4>
-                                <h4><span class="text">Shipping</span><span class="price">$0</span></h4>
-                                <h4><span class="text">Total</span><span class="price">$360</span></h4><form action="/internal/payment"><button class="btn btn-primary btn-block btn-lg" type="submit">Checkout</button></form></div>
+                                <h4><span class="text">Subtotal</span><span class="price">Rs. {{ price }}</span></h4>
+                                <h4><span class="text">Discount</span><span class="price">Rs. 0</span></span></h4>
+                                <h4><span class="text">Shipping</span><span class="price">Rs. 0</span></h4>
+                                <h4><span class="text">Total</span><span class="price">Rs. {{ price }}</span></h4><form action="/internal/payment"><button class="btn btn-primary btn-block btn-lg" type="submit">Checkout</button></form></div>
                         </div>
                     </div>
                 </div>
