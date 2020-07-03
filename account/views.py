@@ -58,15 +58,15 @@ class afterregister(View):
             error = "User already exists...."
             return render(request,"register.html",{'error':error})
 
-def afterclick(request,name):
+def afterclick(request,sr):
     global ec
     email = request.session.get('email')
     obj = Adduser.objects.get(email=email)
     ec = obj.ecart
-    if ec:ec = ec.split('@')
+    if ec:ec = ec.split(',')
     else:ec = []
-    ec.append(name)
-    ec = '@'.join(ec)
+    ec.append(sr)
+    ec = ','.join(ec)
     obj.ecart = ec
     obj.save()
     return redirect('/internal/cart/')
@@ -80,32 +80,33 @@ def importdata(request):
         reader = csv.reader(f)
         for row in reader:
             created = Laptop.objects.create(
-            company = row[0],
-            name = row[1],
-            rating = float(row[2]),
-            no_rating = int(row[3]),
-            mrp = int(row[4]),
-            price = int(row[5]),
-            less = int(row[6]),
-            l1 = row[7],
-            l2 = row[8],
-            l3 = row[9],
-            l4 = row[10],
-            l5 = row[11],
-            Screen_Size = row[12],
-            Maximum_Display_Resolution = row[13],
-            Item_Weight = row[14],
-            Product_Dimensions = row[15],
-            Batteries = row[16],
-            Processor_Brand = row[17],
-            Processor_Type = row[18],
-            RAM_Size = row[19],
-            Memory_Technology = row[20],
-            Hard_Drive_Size = row[21],
-            Hard_Disk_Technology = row[22],
-            Graphics_Coprocessor = row[23],
-            Operating_System = row[24],
-            Date_First_Available = row[25]
+            sr = row[0],
+            company = row[1],
+            name = row[2],
+            rating = float(row[3]),
+            no_rating = int(row[4]),
+            mrp = int(row[5]),
+            price = int(row[6]),
+            less = int(row[7]),
+            l1 = row[8],
+            l2 = row[9],
+            l3 = row[10],
+            l4 = row[11],
+            l5 = row[12],
+            Screen_Size = row[13],
+            Maximum_Display_Resolution = row[14],
+            Item_Weight = row[15],
+            Product_Dimensions = row[16],
+            Batteries = row[17],
+            Processor_Brand = row[18],
+            Processor_Type = row[19],
+            RAM_Size = row[20],
+            Memory_Technology = row[21],
+            Hard_Drive_Size = row[22],
+            Hard_Disk_Technology = row[23],
+            Graphics_Coprocessor = row[24],
+            Operating_System = row[25],
+            Date_First_Available = row[26]
             )
     return HttpResponse("success")
 

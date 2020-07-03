@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Laptop(models.Model):
+    sr = models.IntegerField(primary_key=True)
     company = models.CharField(max_length=50)
     name = models.CharField(max_length=200)
     rating = models.FloatField()

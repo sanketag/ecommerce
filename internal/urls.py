@@ -9,6 +9,6 @@ urlpatterns = [
     path('catalog/',views.catalog),
     path('contact/',views.contact),
     path('payment/',views.payment),
-    path('<str:name>/',views.product),
     path('profile/',views.profile),
+    path('<str:name>/',views.product),
 ]
