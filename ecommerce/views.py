@@ -2,5 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return render(request,'index.html')
+    if request.session.get('email'):
+        return render(request,'index.html',{'inout':'LOGOUT','inoutl':'/account/logout/'})
+    else:
+        return render(request,'index.html',{'inout':'LOGIN','inoutl':'/account/login/'})
 

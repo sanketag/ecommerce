@@ -11,9 +11,9 @@ ec = ''
 # Create your views here.
 def login(request):
     if request.session.get('email'):
-        return redirect("/")
+        return render(request,'index.html',{'inout':'LOGOUT','inoutl':'/account/logout/'})
     else:
-        return render(request,'login.html')
+        return render(request,'login.html',{'inout':'LOGIN','inoutl':'/account/login/'})
 
 def afterlogin(request):
     email = request.POST.get('email')
@@ -22,22 +22,28 @@ def afterlogin(request):
         obj = Adduser.objects.get(email=email)
     except:
         error = "No such user...."
-        return render(request,"login.html",{'error':error})
+        return render(request,'login.html',{'inout':'LOGIN','inoutl':'/account/login/','error':error})
     else:
         if password == obj.password:
             request.session['email'] = email
-            return redirect("/")
+            return render(request,'index.html',{'inout':'LOGOUT','inoutl':'/account/logout/'})
         else:
             error = "Invalid password"
-            return render(request,"login.html",{'error':error})
+            return render(request,'login.html',{'inout':'LOGIN','inoutl':'/account/login/','error':error})
 
 def register(request):
-    return render(request,'registration.html')
+    if request.session.get('email'):
+        return render(request,'registration.html',{'inout':'LOGOUT','inoutl':'/account/logout/'})
+    else:
+        return render(request,'registration.html',{'inout':'LOGIN','inoutl':'/account/login/'})
 
 class afterregister(View):
     def get(self,request):
         error = "Invalid method"
-        return render(request,'registration.html',{'error':error})
+        if request.session.get('email'):
+            return render(request,'registration.html',{'inout':'LOGOUT','inoutl':'/account/logout/','error':error})
+        else:
+            return render(request,'registration.html',{'inout':'LOGIN','inoutl':'/account/login/','error':error})
     
     def post(self,request):
         data = {
@@ -53,10 +59,16 @@ class afterregister(View):
         except Exception:   
             new_obj = Adduser.objects.create(**data)
             new_obj.save()
-            return redirect("/account/login/")
+            if request.session.get('email'):
+                return render(request,'index.html',{'inout':'LOGOUT','inoutl':'/account/logout/'})
+            else:
+                return render(request,'login.html',{'inout':'LOGIN','inoutl':'/account/login/'})
         else:
             error = "User already exists...."
-            return render(request,"register.html",{'error':error})
+            if request.session.get('email'):
+                return render(request,'registration.html',{'inout':'LOGOUT','inoutl':'/account/logout/','error':error})
+            else:
+                return render(request,'registration.html',{'inout':'LOGIN','inoutl':'/account/login/','error':error})
 
 def afterclick(request,sr):
     global ec
@@ -69,11 +81,14 @@ def afterclick(request,sr):
     ec = ','.join(ec)
     obj.ecart = ec
     obj.save()
-    return redirect('/internal/cart/')
+    if request.session.get('email'):
+        return render(request,'shopping-cart.html',{'inout':'LOGOUT','inoutl':'/account/logout/'})
+    else:
+        return render(request,'shopping-cart.html',{'inout':'LOGIN','inoutl':'/account/login/'})
 
 def logout(request):
     del request.session['email']
-    return redirect('/')
+    return render(request,'index.html',{'inout':'LOGIN','inoutl':'/account/login/'})
 
 def importdata(request):
     with open('laptop.csv') as f:
@@ -108,27 +123,8 @@ def importdata(request):
             Operating_System = row[25],
             Date_First_Available = row[26]
             )
-    return HttpResponse("success")
+    if request.session.get('email'):
+        return render(request,'index.html',{'inout':'LOGOUT','inoutl':'/account/logout/'})
+    else:
+        return render(request,'index.html',{'inout':'LOGIN','inoutl':'/account/login/'})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # l name,price
-    # l.append(name,price)
-    # l
