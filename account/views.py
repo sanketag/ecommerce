@@ -82,7 +82,7 @@ def afterclick(request,sr):
         ec = ','.join(ec)
         obj.ecart = ec
         obj.save()
-        return render(request,'shopping-cart.html',{'inout':'LOGOUT','inoutl':'/account/logout/'})
+        return redirect('/internal/cart/')
     else:
         return render(request,'shopping-cart copy.html',{'inout':'LOGIN','inoutl':'/account/login/'})
 
