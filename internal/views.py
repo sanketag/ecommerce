@@ -87,7 +87,7 @@ def search(request):
     if request.session.get('email'):
         return render(request,'catalog-page.html',{'inout':'LOGOUT','inoutl':'/account/logout/','allProds':allProds})
     else:
-        return render(request,'catalog-page.html',{'inout':'LOGIN','inoutl':'/account/login/','allProds':prod})
+        return render(request,'catalog-page.html',{'inout':'LOGIN','inoutl':'/account/login/','allProds':allProds})
     
         
 
