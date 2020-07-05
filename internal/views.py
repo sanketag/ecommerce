@@ -31,7 +31,7 @@ def cart(request):
             price += prod[i].price
         return render(request,'shopping-cart.html',{'inout':'LOGOUT','inoutl':'/account/logout/','l':l,'price':price})
     else:
-        return render(request,'shopping-cart.html',{'inout':'LOGIN','inoutl':'/account/login/','l':l,'price':price})
+        return render(request,'shopping-cart copy.html',{'inout':'LOGIN','inoutl':'/account/login/'})
 
 def catalog(request):
     prod = Laptop.objects.all()
@@ -71,6 +71,25 @@ def product(request,name):
         return render(request,'product-page.html',{'inout':'LOGOUT','inoutl':'/account/logout/','allProds':model,'all':prod})
     else:
         return render(request,'product-page.html',{'inout':'LOGIN','inoutl':'/account/login/','allProds':model,'all':prod})
+
+def search(request):
+    query = request.GET['search']
+    if len(query)>208:
+        allProds = Laptop.objects.none()
+
+    else:
+        allPostsCompany=Laptop.objects.filter(company__icontains=query)
+        allPostsName=Laptop.objects.filter(name__icontains=query)
+        allProds= allPostsCompany.union(allPostsName)
+
+    # if allPosts.count() == 0:
+    #     messages.warning(request,"No search results found.Please refine your query")
+    if request.session.get('email'):
+        return render(request,'catalog-page.html',{'inout':'LOGOUT','inoutl':'/account/logout/','allProds':allProds})
+    else:
+        return render(request,'catalog-page.html',{'inout':'LOGIN','inoutl':'/account/login/','allProds':prod})
+    
+        
 
 # def profile(request):
 #     if request.session.get('email'):
