@@ -72,19 +72,19 @@ class afterregister(View):
 
 def afterclick(request,sr):
     global ec
-    email = request.session.get('email')
-    obj = Adduser.objects.get(email=email)
-    ec = obj.ecart
-    if ec:ec = ec.split(',')
-    else:ec = []
-    ec.append(sr)
-    ec = ','.join(ec)
-    obj.ecart = ec
-    obj.save()
     if request.session.get('email'):
+        email = request.session.get('email')
+        obj = Adduser.objects.get(email=email)
+        ec = obj.ecart
+        if ec:ec = ec.split(',')
+        else:ec = []
+        ec.append(sr)
+        ec = ','.join(ec)
+        obj.ecart = ec
+        obj.save()
         return render(request,'shopping-cart.html',{'inout':'LOGOUT','inoutl':'/account/logout/'})
     else:
-        return render(request,'shopping-cart.html',{'inout':'LOGIN','inoutl':'/account/login/'})
+        return render(request,'shopping-cart copy.html',{'inout':'LOGIN','inoutl':'/account/login/'})
 
 def logout(request):
     del request.session['email']
