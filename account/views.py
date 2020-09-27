@@ -62,6 +62,7 @@ class afterregister(View):
             if request.session.get('email'):
                 return render(request,'index.html',{'inout':'LOGOUT','inoutl':'/account/logout/'})
             else:
+                
                 return render(request,'login.html',{'inout':'LOGIN','inoutl':'/account/login/'})
         else:
             error = "User already exists...."
